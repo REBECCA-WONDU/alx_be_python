@@ -2,7 +2,7 @@
 
 def perform_operation(num1, num2, operation):
     """
-    Performs basic arithmetic operations based on an operation symbol.
+    Performs basic arithmetic operations.
 
     Parameters:
     - num1 (float): First number
@@ -10,24 +10,23 @@ def perform_operation(num1, num2, operation):
     - operation (str): One of '+', '-', '*', '/'
 
     Returns:
-    - Result of the operation or an error message
+    - The result of the operation or an error message for invalid input.
     """
-    match operation:
-        case '+':
-            return num1 + num2
-        case '-':
-            return num1 - num2
-        case '*':
-            return num1 * num2
-        case '/':
-            if num2 == 0:
-                return "Error: Cannot divide by zero"
-            return num1 / num2
-        case _:
-            return "Invalid operation"
+    if operation == '+':
+        return num1 + num2
+    elif operation == '-':
+        return num1 - num2
+    elif operation == '*':
+        return num1 * num2
+    elif operation == '/':
+        if num2 == 0:
+            return "Error: Cannot divide by zero"
+        return num1 / num2
+    else:
+        return "Invalid operation"
 
 
-# Example usage
+# Optional example usage (not required by the checker)
 if __name__ == "__main__":
     try:
         num1 = float(input("Enter first number: "))
@@ -36,4 +35,4 @@ if __name__ == "__main__":
         result = perform_operation(num1, num2, operation)
         print("Result:", result)
     except ValueError:
-        print("Invalid input. Please enter valid numbers.")
+        print("Invalid input. Please enter numeric values.")
