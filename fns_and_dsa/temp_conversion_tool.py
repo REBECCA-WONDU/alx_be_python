@@ -1,25 +1,49 @@
-# temp_conversion_tool.py
+# Global conversion factors (as needed)
+def celsius_to_fahrenheit(c):
+    return (c * 9/5) + 32
 
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
+def fahrenheit_to_celsius(f):
+    return (f - 32) * 5/9
 
-def convert_to_celsius(fahrenheit):
-    return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
+def celsius_to_kelvin(c):
+    return c + 273.15
 
-def convert_to_fahrenheit(celsius):
-    return celsius * CELSIUS_TO_FAHRENHEIT_FACTOR + 32
+def kelvin_to_celsius(k):
+    return k - 273.15
 
-if __name__ == "__main__":
+def display_menu():
+    print("\nTemperature Conversion Tool")
+    print("1. Celsius to Fahrenheit")
+    print("2. Fahrenheit to Celsius")
+    print("3. Celsius to Kelvin")
+    print("4. Kelvin to Celsius")
+    print("5. Exit")
+
+while True:
+    display_menu()
     try:
-        temp = float(input("Enter the temperature to convert: "))
-        unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
-        if unit == "F":
-            converted = convert_to_celsius(temp)
-            print(f"{temp}°F is {converted}°C")
-        elif unit == "C":
-            converted = convert_to_fahrenheit(temp)
-            print(f"{temp}°C is {converted}°F")
-        else:
-            print("Invalid unit. Please enter 'C' or 'F'.")
+        choice = int(input("Enter your choice (1-5): "))
     except ValueError:
-        raise ValueError("Invalid temperature. Please enter a numeric value.")
+        print("Please enter a valid number.")
+        continue
+
+    if choice == 5:
+        print("Exiting the program.")
+        break
+
+    try:
+        temp = float(input("Enter the temperature: "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        continue
+
+    if choice == 1:
+        print(f"{temp}°C = {celsius_to_fahrenheit(temp):.2f}°F")
+    elif choice == 2:
+        print(f"{temp}°F = {fahrenheit_to_celsius(temp):.2f}°C")
+    elif choice == 3:
+        print(f"{temp}°C = {celsius_to_kelvin(temp):.2f}K")
+    elif choice == 4:
+        print(f"{temp}K = {kelvin_to_celsius(temp):.2f}°C")
+    else:
+        print("Invalid choice.")
