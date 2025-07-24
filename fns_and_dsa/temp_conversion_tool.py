@@ -1,16 +1,24 @@
-# Global conversion factors (as needed)
+# temp_conversion_tool.py
+
+# Global conversion factors
+FAHRENHEIT_MULTIPLIER = 9 / 5
+FAHRENHEIT_OFFSET = 32
+KELVIN_OFFSET = 273.15
+
+# Conversion functions
 def celsius_to_fahrenheit(c):
-    return (c * 9/5) + 32
+    return (c * FAHRENHEIT_MULTIPLIER) + FAHRENHEIT_OFFSET
 
 def fahrenheit_to_celsius(f):
-    return (f - 32) * 5/9
+    return (f - FAHRENHEIT_OFFSET) * 5 / 9
 
 def celsius_to_kelvin(c):
-    return c + 273.15
+    return c + KELVIN_OFFSET
 
 def kelvin_to_celsius(k):
-    return k - 273.15
+    return k - KELVIN_OFFSET
 
+# Display menu
 def display_menu():
     print("\nTemperature Conversion Tool")
     print("1. Celsius to Fahrenheit")
@@ -19,8 +27,10 @@ def display_menu():
     print("4. Kelvin to Celsius")
     print("5. Exit")
 
+# Main program loop
 while True:
     display_menu()
+
     try:
         choice = int(input("Enter your choice (1-5): "))
     except ValueError:
