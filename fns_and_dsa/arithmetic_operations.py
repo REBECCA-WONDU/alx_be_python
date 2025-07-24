@@ -10,7 +10,7 @@ def perform_operation(num1, num2, operation):
     Returns:
         float or str: Result of the operation or error message for division by zero
     """
-    operation = operation.lower()
+    operation = operation.lower().strip()  # Added strip() to handle any whitespace
     
     if operation == 'add':
         return num1 + num2
